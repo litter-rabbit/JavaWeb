@@ -97,6 +97,36 @@
                 
                 5.eval(string)将string转化为js代码执行
                 6parseInt()
+        *BOM对象
+            1.windows对象
+                方法：
+                    1）alert()
+                    2)prompt()
+                    3)confirm()
+                    
+                 *定时调用
+                    setTimeout(fun,3000)
+                    setInteval(fun,3000)
+            2.Location对象
+                方法：
+                    reload()
+                    href属性
+            3.history
+                方法：
+                    back()
+                    forward()
+                    go()
+        *DOC对象
+            1.获取元素
+               getByElementId()
+            2.创建元素
+                createElement()
+            
+             
+                    
+                    
+                    
+                 
                 
                 
                                 
