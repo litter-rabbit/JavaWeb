@@ -31,7 +31,7 @@
             1.选择所有元素：*{}
             2.并集选择：选择器1，选择器2{}
             3.子选择器：选择器 选择器{}
-            4.父选择器：选择器1<选择器2{}
+            4.父选择器：选择器1>选择器2{}
             5.属性选择器：元素名称[属性名=“属性值”]{}
             6.伪类选择器：
                 <a>
@@ -39,5 +39,74 @@
                     a:hover{}
                     a:active{}
                     a:vistied{}
+### JavaScript
+    *基本数据类型
+        1）String
+        2)boolean'
+        3)number
+        4)undefined
+        5)null
+        
+     *特殊语法
+        1）结尾可以以换行符，也可也分号结尾
+        2） var 定义的是局部变量，不加var定义的是全局变量
+        
+    *基础对象
+        *funtion对象
+            1)属性：
+                length
+            2)特点
+                1.返回值不用写，型参不用写
+                2.定义一个相同的方法对象，会被覆盖
+                3.js中，方法调用只与名称有关，与参数无关
+                4.方法中有内置对象arguments,保存所有参数
+        *Array对象
+            1）创建
+                1.var arr = new Array(1,23,3);
+                2.var arr = new Array(默然长度)
+                3.var arr = [1,2,3]
+            2.特点
+                1.长度是变化的
+                2.可以保存任意类型
+        *Date
+            1.方法：
+                getLocalString()
+                getTime()获取与1970 1 1 零点的毫秒时间差
+         
+        *正则表达式对象
+            1.单个字符[]
+                如[a],[a-z0-9_] 
+                    \d表示数字
+                    \w表示[a-zA-Z0-9_]
+                    
+            2.量词符号
+                ?:零次或者1次
+                *零次或者多次
+                +1次或者多次
+                {m,n}m到n个
+            *创建
+                var reg = new RegExp("^\w{6,12}$")
+                var reg =/\w^{6,12}$/
+        *Global对象
+            *方法
+                1.decodeURL（）
+                2.encodeURL（）
+                3.decodeComponentURL（）
+                4.encodeComponentURL（）
+                对URL进行编码
+                
+                5.eval(string)将string转化为js代码执行
+                6parseInt()
+                
+                
+                                
+            
+        
+                 
+                
+                         
+         
+
+          
                     
          
