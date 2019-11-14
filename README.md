@@ -121,7 +121,40 @@
                getByElementId()
             2.创建元素
                 createElement()
-            
+                
+                
+### XML
+    *基本语法
+        1.xml第一行必须为文档声明<?xml version="1.0"?>
+        2.xml有且只有一个根标签
+        3.属性值必须使用引号（单双都可以）
+        4.区分大小写
+    *组成部分
+        1）文档声明
+            1.格式<? 属性列表?>
+            2.属性列表
+                *version="1.0"必须有
+                *encoding 默认是ISO-8859-1
+                *standlone="yes" 是否依赖与其他文件
+                
+          
+        *属性值唯一
+        *文本
+            *CDATA区:格式：<![CDATA[文本]]>
+    *约束
+        DTD
+            *引入dtd文件到xml中
+                *本地<!DOCTYPE 跟标签名 SYSTEM "dtd文件的位置">
+                *<!DOUCTYPE 根标签名 PUBLIC “dtd文件名称” “dtd URL地址”>
+                
+        
+    *JSoup
+        quickstart
+            1.导入jar包
+            2.String path = ClassExample.class.getClassLoader().gerRerourse("example.xml").getPath();
+            Document doucment = Jsoup.parse(new File(path,"utf-8");
+            Elements elements=document.getElementByTag("name");
+               
              
                     
                     
