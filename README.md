@@ -136,8 +136,6 @@
                 *version="1.0"必须有
                 *encoding 默认是ISO-8859-1
                 *standlone="yes" 是否依赖与其他文件
-                
-          
         *属性值唯一
         *文本
             *CDATA区:格式：<![CDATA[文本]]>
@@ -155,9 +153,123 @@
             Document doucment = Jsoup.parse(new File(path,"utf-8");
             Elements elements=document.getElementByTag("name");
                
+                    
+### Servlet:
+    概念：Servlet就是一个接口，定义Java类被tomcat识别的规则
+    quick start：
+        1.定义一个class类实现servlet接口
+        2.实现servlet中的抽象方法
+        3.配置servlet
+      
+            <servlet>
+                <servlet-name>demo1</servlet-name>
+                <servlet-class>com.java.web.hello<servlet-class>
+            </servlet>
+            <servlet-mapping>
+                <servlet-name>demo1</servlet-name>
+                <servlet-patern>/hello</servlet-patern>
+            </servlet-mapping>
+    执行原理：通过url路径找到对应的Java类名称，然后Class.forName()加载进内存
+             之后cls.newInstance();然后调用cls.service();
              
-                    
-                    
+             详细过程：
+                1.tomcat根据url找到对应的类，生成实列，然后根据浏览器传递的reques参数创建
+                    reque对象和response对象，然后将request对象和response对象传递给service()方法
+                    。
+             
+    Servlet生命周期：init()一开始被调用，而且只会调用一次
+                            1.<load-on-startup>值为正整数是服务器启动就会调用init(),负数不会。
+                    service()之后被调用，可以执行多次
+                    destroy()tomcat关闭是调用一次
+                            1.只有在服务器正常关闭时才会调用destroy();
+    Servlet3.0
+        1.可以使用注解
+            如@WebServlet(urlparttern="/demo")
+                public class demo implements Servlet{
+                           
+                          public void init(){
+                          
+                          }
+                          public void service(){
+                          }
+                          public void destroy(){};  
+                
+                }
+                            
+     Servlet体系结构
+        1.Servlet - GenericServlet - HttpServlet;
+        
+        HttpServlet对http协议进行了封装，我们只需要实现doGet(),和doPost()
+        
+                                    
+### Http
+    1.0短链接每次请求之后会断开连接
+    1.1:长连接，一直连接
+    
+    * 请求消息格式
+        1.请求行
+            *请求方式有7种
+                get:参数在请求行中
+                psot:参数在请求体中
+        2.请求头 键名：键值
+            Referer:
+                *作用告诉服务器请求来自哪个页面
+                    *防止盗链
+                    *统计
+        3.请求空行
+        4.请求体
+            *封装Post的参数消息
+     reques对象
+        1.获取请求行数据
+            *如 GET /day/demo/name=xiaoming HTTP/1.1
+            方法：
+                1）String gerMethod()  :GET
+                2)String getContextPath() /day
+                3)String getServletPaht() /demo
+                4)String getQueryString()   name=xiaoming
+                5)String getRequestURI(): /day/demo
+                         getRequestURL()?http://localhost/day/demo
+                6)String gerProtocal() HTTP/1.1
+                7)获取客户的IP地址
+                   String gerRemoteAddr()   
+            
+        2.获取请求头
+            1.String getHeader(String name)
+            2.getHeaderNames();
+            
+        3.获取请求体(Post请求)
+            BufferedReader br = requeset.getReader();
+            br.readLine();
+         获取参数通用方法
+            1）getParametr(String name)
+            2)String[] getParameterValues(String name)
+            3)Enumeration<String> getParameter()获取所有参数名称
+            4）Map<String,String[]> getParameterMap();
+                
+        中文乱码问题：
+            psot方法的参数是通过流获取的，所以需要指定编码格式
+            reques.setCharacterEncoding("UTF-8");
+            
+        2.请求转发：一种在服务器内部资源跳转的方式
+            1.Request.getDispatcher(String uri);
+            2.Requestdispatcher.forward(request,response)  
+            
+            *特点
+                1.浏览器的地址栏不会发生变化
+                2.只能访问内部服务器的uri
+                3.只发送一次请求
+                
+         3.共享数据
+            *代表一次请求的范围，用于转发资源共享
+            *方法
+                setAtribute(String name ,Onject obj);
+                getAttribute();
+                       
+         4.ServletContext对象
+            request.getServletContext()
+            获取Application对象   
+        
+                  
                     
                  
                 
