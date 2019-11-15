@@ -270,9 +270,42 @@
             获取Application对象   
         
                   
+    response对象
+        1.数据格式
+            1）响应行
+                状态码：
+                    1XX:服务器接收没有完成，询问客户端
+                    2xx:成功
+                    3xx:302(重定向) 304（访问缓存）            
+                    4xx:客户端错误
+                        *404没有对应的资源
+                        *405请求没有对应的doXxx()
+                    5xx:服务器内部错误
                     
-                 
-                
+            2）响应头：
+                content-type：告诉浏览器的编码格式
+                content-disposition:in-line默认值
+                                    attachment：以附件形式打开
+        2.设置数据
+            1.设置相应行
+                1）setStatus(int sc)
+            2.设置响应头
+                1）setHeader(String name,String value)    
+            1.设置响应体：
+                1.获取输出流
+                    字符输出流：PrintWtiter getWriter()
+                    字节输出流： ServletOutputStream getOutputSteam()
+                                 
+        3.重定向
+            1.设置状态码         
+            2.设置响应头location
+                    这两步相当与response.sendrRedirect("");
+                  
+             特点：
+                1.重定向地址栏是发生变化的
+                2.可以访问外部的资源
+                3.重定向是两次请求
+                   
                 
                                 
             
