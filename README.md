@@ -305,11 +305,111 @@
                 1.重定向地址栏是发生变化的
                 2.可以访问外部的资源
                 3.重定向是两次请求
-                   
                 
-                                
+        4。路径
+            绝对路径
+                1）给服务器使用不需要加虚拟目录 转发
+                2）客户端需要加虚拟目录    重定向
+        5.中文乱码问题
+            response.setContentType（"text/html;utf-8"）
             
+    ServletContext对象
+          获取：
+                通过request或者HttpServlet
+        1.功能
+            1）获取mime类型
+            2）域对象
+                所有用户都可以共享数据
+                 setAttrubute()
+            3）获取服务器路径   getRealPath();
+                *wbe目录下         
+                    getRealPaht("/example.properties")
+                *scr下
+                    getRealPath("/WEB-INF/classes/example.properties")
+              
+                   
+###CookieSession
+
+    *Cookie
+        1.quickstart
+            1)创建cookie
+                new Cookie(String name,String value)
+            2)发送Cookie
+                response.addCookie(Cookie cookie)
+            3)获取Cookie
+                Cookie[] request.getCookies()
+    
+        2.保存时间
+            1.默认情况，浏览器关闭之后就被销毁
+            2.持久化保存
+                *setMaxage(int seconds)
+                    seconds 为负数时等于默认情况
+                    secounds 正数表示存活多少秒
+                    seconds 为0表示删除cookie
+                    
+         3.共享问题
+            1。同一服务器
+                同一个服务器类的多个项目是不能共享cooki的
+                如果要共享需要设置setPath("/");
+             2.不同服务器
+                需要设置一级域名相同就可以cookie共享
+                    setDomain("baidu.com");
+         4.作用特点
+            1.cookie一般用于少量不太敏感的数据
+            2.在不登录的情况下，完成对用户的识别
+            
+    *Session
+        概念：在一次会话中多次共享数据，将数据保存在服务端HttpSession
+        quickstart;
+            1.获取Session
+                request.getSession();
+            2.使用
+                setAttribute()
+                getAttrrubute();
+        *细节：
+            1.默认情况下当客户端关闭后，再次连接时，sesssion是不同的
+                所以需要在cookie中设置JSESSIONID的值。
+                
+            2.服务器关闭之后Session都会被销毁
+                   *Session的钝化
+                        *在服务器关闭之前将Session对象序列化保存在work目录下
+                        
+                   *Session的活化
+                        *在服务器启动时读取Session.ser把session对象加载进内存中
+                       ideal无法完成，需要tomcat目录下完成
+                       
+        *什么时候被销毁
+            1.服务器关闭
+            2.session对象调用invalidate（）
+            3.默认失效时间为30分钟
+                可以在web.xml中更改
+                
         
+                 
+    
+         
+                                
+### JSP
+    1.原理：
+        本质上就是一个Servlet类，当jsp被访问时，会被转化成java类，继承与HttpBase
+    2.脚本
+        *<% 代码 %> 
+            定义在service（）方法中，service可以写什么，里面就可以写什么                              
+        
+        *<%! 代码 %>
+            定义在类的成员变量中，成员变量可以写什么，他就可以写什么
+        
+        *<%= 代码%>    
+                输出语句，相当于response.write()
+                
+    3.JSP内置对象
+        *request
+        *response
+        *out:字符输出流对象
+            与respnose.getWrite区别
+                服务器会先寻找response的缓冲区内容打印出来，之后再打印out的缓冲区内容
+                  
+            
                  
                 
                          
