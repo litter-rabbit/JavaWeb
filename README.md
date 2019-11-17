@@ -407,9 +407,84 @@
         *response
         *out:字符输出流对象
             与respnose.getWrite区别
-                服务器会先寻找response的缓冲区内容打印出来，之后再打印out的缓冲区内容
+               服务器会先寻找response的缓冲区内容打印出来，之后再打印out的缓冲区内容
+        分类：
+            *域对象
+                1.PageContext pageContext 当前页面共享数据，获取其它内置对象
+                2.HttpServletRquest request 一次请求访问多个资源共享数据
+                3.HttpSession session 一次会话多个请求
+                4.application ServletContext 所有用户共享数据
+         
                   
+                  
+    4.指令
+        作用：配置jsp页面，导入资源文件
+        格式：<%@ 属性名称=“属性值”  %>
+        分类：
+            1.page:配置页面的，如格式，缓冲区大小
+                1.contentType设置mime,和jsp编码格式
+                2.import 导入java包
+                3.errorPage：发生异常后跳转到指定的页面
+                4.iserrorpage:表示是否是错误页面
+            2.include：页面包含的。导入页面资源文件
             
+            3.taglib：导入jstl包
+    5.注释
+        1.html注释
+            <!-- -->
+        2.jsp注释
+            <%-- --%>
+
+
+
+
+###EL表达式
+    1。语法 ${}
+    2。jsp中默认值支持el表达式的，要忽略它可以在配置isElignored=true;
+        或者\${}
+    3.运算符：
+        1.算术：+ - 等 
+        2.空运算符 empty ：用于判断字符串，集合，数组，是非为null
+            
+    4.获取值
+        1.语法：
+            ${域名.键名}
+                域名：
+                    pageScope
+                    requestScope
+                    sessionScope
+                    applicationScope
+            ${键名} 表示从最小的域中依次查到，找到为止
+             
+            
+        2.获取对象
+             普通对象  
+            1.${域名.键名.属性名}（属性名就是对象对应的get方法名称去除get;)
+              List对象
+            1.${域名.键名[索引]}
+               Map对象
+            1.${域名.键名.key}
+    4.动态获取虚拟目录
+        ${pageContext.request.contextPath}
+                            
+                        
+### JSTL
+    1.if标签
+        1.test属性必须要，接受一个boolean
+            如<c:if test="${requestScope.number!=0}">
+                <h1> ${number}为奇数</h1>
+             </c:if>
+    2.choose标签 ：相当于switch语句
+    3.foreach标签
+        属性：begin：
+             end:
+             var：
+             step：步长
+             varStatus:循环对象      
+                     
+                 
+            
+                  
                  
                 
                          

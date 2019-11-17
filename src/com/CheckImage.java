@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.DriverManager;
 import java.util.Random;
 
 @WebServlet("/checkimage")
@@ -38,13 +39,11 @@ public class CheckImage  extends HttpServlet {
             g.drawString(ch+"",40*(i+1),height/2);
 
         }
-        System.out.println(codestr.toString());
+
         req.getSession().setAttribute("code_str",codestr.toString());
 
         ServletOutputStream outputStream  = resp.getOutputStream();
         ImageIO.write(image, "jpg", outputStream);
-
-
 
     }
 
