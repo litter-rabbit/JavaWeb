@@ -604,6 +604,49 @@
                 
                 a.empty()子元素删除
                 a.remove()删除所有
+    5。动画
+        1，显示与隐藏
+            1.show(speed,[easing],fun) speed有slow,normal,fast,也可以自定义时间，
+                                        easing::默认时swing，可以改成匀速的linear
+            2.hide
+            3.toggle
+            4.slideUp
+            5.slideDown
+            6.fadeIn
+            7.fadeOut
+            8.fadeToggle
+            
+        2.遍历
+            1.$(#id).each(fun(index,element){})
+            2.for(li fo citys){}
+            
+    6.事件绑定
+        1.jq对象.事件方法（fun(){}）
+            *如果没有fun()则会触发浏览器默认方法
+        2.on/off
+            jq对象.on("事件名称"，fun(){})                               
+            jq对象.off("事件名称")
+        3.toggle 需要引入插件
+            jq对象.toggle(fun1,fn2,fn3)依次调用，没有参数默认解绑所有事件
+           
+    6.插件
+        1.对象增强
+        $.fn.extend({
+                方法名：function(){
+                        this.prop()    
+                }
+        })；
+        2.全局增强
+         $.extend({
+            方法名：function(){
+                
+            }
+         });        
+                
+                
+                
+                
+    
                 
                 
      
