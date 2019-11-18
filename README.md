@@ -480,7 +480,135 @@
              end:
              var：
              step：步长
-             varStatus:循环对象      
+             varStatus:循环对象
+             
+             
+             
+             
+### Filter
+    qucikstart:
+        1.定义一个类，实现filter接口
+        2.配置
+        3.放行doFilter(req,resp);
+        
+        
+    生命周期：
+        服务器启动时，创建Filter对象，同时调用init()方法
+        访问页面时，调用doFilter()
+        服务器关闭时调用destory（）
+        
+        
+    拦截路径：
+        1.具体资源：/index。jsp
+        2.拦截目录 /user/*
+        3.后缀名：*.jsp
+        4拦截所有资源 /*
+    拦截方式：
+        *设置dispatcherTypes属性
+            1.REQUEST 默认值，浏览器直接访问
+            2.FORWARD :转发访问资源
+            3.INCLUDE:包含访问资源
+            4.ERROR:错误跳转资源
+            5.ASYNC:异步访问资源
+    拦截顺序：
+        注解配置下：
+            同样的拦截路径安装类名小的先执行
+         web.xml下：
+            同样的拦截路径安装谁在上面谁先执行
+            
+        代理模式：
+            动态代理:
+                1.动态代理
+                
+            
+                   
+### JQuery
+
+    1。基本语法
+        var div1 = $("选择器")；
+        div1.html()
+        
+    2.js对象和jq对象转化
+        js ->jq对象：$(div1);
+        jq ->js对象 jq对象[索引];
+        
+        
+    3.选择器
+        1.基本语法
+            1.事件绑定
+                    $("#button").click(funtion(){
+                    }) 
+            2.入口函数
+                $(funtion(){
+                    
+                })
+                可以定义多次
+                与window.onload(funtion(){})只能定义一次，后面的覆盖前面定义的
+            3.$("#id").css("backGroudColor","pink");    
+        分类：
+            1.基本选择器
+                1）标签选择器：$("html标签") 
+                2）id选择器：$(“#id”)
+                3)类选择器：$(”.class“)
+                4)并集选择器：$(”.class,#id,div“ );
+                
+            2. 层级选择器
+                1）$(div span)div标间下的所有span标签
+                2）$(div >span)div下的儿子span标签
+            3.属性选择器
+                1）选着有属性id,而且属性值包含“te”
+                    $("div[id][title*='te']")
+                        ^=：以什么开头
+                        $=：以什么结尾的属性值
+            4.过滤选择器：
+                1）$("div:first")选择第一个       
+                2）$("div:last")最后一个       
+                3）$("div:not(.one)")不包含class属性为one的       
+                4）$("div:eq(3)")等于3的       
+                5）$("div:lt(3)")小于3 gt(3)大于3       
+                6）$("div:even")偶数       
+                7）$("div:odd")奇数       
+                8）$("div:header")获取标题元素       
+                9）$("div:first")
+            5.表单过滤器
+                1.enable
+                2.disable 
+                3.checked
+                4.selecked
+                
+    4.DOM操作
+        1.内容操作
+            1.html()
+            2.text()
+            3.val()
+        2.属性操作
+            1.attr():获取/设置元素值
+            2.removeAttr()
+            3.prop();获取/设置元素值
+            4.removeProp()
+            *attr和prop区别：
+                1.如果操作的时固有属性，建议使用prop()
+                2.如果时自定义属性，建议使用attr():如有些selecked和option无法获取到
+                
+                    
+            对class操作：
+                1.addClass()
+                2.removeClass();
+                3.toggleClass();
+                                      
+            CRUD操作:
+                1.a.append(b)添加到内部    
+                2.a.prepend(b);
+                3.a.after(b)平级
+                4.a.befroe(b)
+                
+                a.empty()子元素删除
+                a.remove()删除所有
+                
+                
+     
+        
+        
                      
                  
             
