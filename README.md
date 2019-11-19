@@ -641,7 +641,138 @@
             方法名：function(){
                 
             }
-         });        
+         });
+### AJAX
+
+       1.实现方式
+            $.({
+                url:"ajaxServlet11",
+                type:"POST,
+                data:{"username":"xiao","age":23},
+                success:funtion(data){       data时服务器返回的response数据
+                    
+                }
+                error:function(){
+                
+                }
+                dataType:设置接受的数据格式
+            
+            });
+            
+            或者
+                $.get(url,data,fun,type);
+                $.post(url,data,fun,type); 
+    
+### JSON
+    概念：保存对象
+    1.语法
+        1.基本规则
+            多个键值都好隔开
+            键名可以加引号，也可以不加
+    2.Java转化为JSON
+        1.导入jackson相关的jar包
+        2.创建jackjson核心对象，objectmapper
+        3.调用objectmapper相关方法
+        
+        *注解
+            @JsonIngnore
+            @JsonFormart(pattern="yyyy-MM-dd")
+        
+        复杂对象:
+            List转化为一个数组
+            Map:转化为普通的json对象
+     中文乱码问题：
+        1.在$.get()中指定json数据格式
+        2.response.setContentType("application/html;charset=utf-8");
+        
+                
+            
+### Redis
+    1.数据格式
+        key ,value
+           key是字符串
+           value:
+                1.字符串
+                2.hash  相当于map
+                3list  相当于linklist
+                4.set
+                5.sortedset
+    2.基本命令
+        *通用命令：
+            key *获取所有key
+            type key 查看数据类型
+    
+        1.string类型数据
+            1.存储：set key value
+            2.获取 get key
+            3.删除 del key
+        2.hash类型
+            1.存储：hset hashname key value
+            2.获取 hget hashname key
+                    1.hgetall hashname
+            3.删除 hdel key hashname 
+            
+        3.list类型
+           *存储
+            1.lpush key value
+            2.rpush key value
+           *获取
+            1.lrange key start end
+           *删除
+            1.lpop key
+            2.rpop key
+         4.set类型
+            *存储
+                1.sadd key value
+            *获取
+                1smembers key              
+            *删除
+                1.srem key value
+                             
+         5.sortedset类型
+            *存储 zadd key score value
+            *获取 zrange key start end
+            *删除 zrem key value
+            
+    3.持久化
+        *RDB模式
+        1.save 900 1 在900秒内，数据改变了1次则保存一次
+        2.save 300 10   在300秒内，数据改变了10次则保存一次
+        *AOF模式
+            开启：appendonly yes
+            
+            appendfsync always 每一次操作都持久化
+            appendfsync everysec 每隔一秒
+            appendfsync no 不进行持久化
+            
+        
+    4.jedis
+        *quickstart                            
+            Jedis jedis = new Jedis（“localhost”，6379）；
+            Jedis.setex（“key”，20,“value”）；
+            Jedis.close（）
+        *连接池
+            JedisPool jedispool = new JedisPool(config,"localhost",6379)；
+            Jedis = jdesipool.getResourse()
+            
+            
+            
+### Maven
+    1.常用命令
+        mvn clean 删除target目录
+        mvn compile 编译源代码
+        mvn test 编译测试代码
+        mvn package 生成war包和编译test，和src
+        mvn installl 编译所有，在仓库中生成本地bao
+        
+    2.生命周期
+    编译，测试，打包，安装，发布deploy
+    
+                        
+         
+         
+         
+                 
                 
                 
                 
