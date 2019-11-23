@@ -683,7 +683,7 @@
             Map:转化为普通的json对象
      中文乱码问题：
         1.在$.get()中指定json数据格式
-        2.response.setContentType("application/html;charset=utf-8");
+        2.response.setContentType("application/json;charset=utf-8");
         
                 
             
@@ -767,6 +767,11 @@
         
     2.生命周期
     编译，测试，打包，安装，发布deploy
+    
+   
+
+
+    
     
                         
          
